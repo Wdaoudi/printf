@@ -6,9 +6,11 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:32:10 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/10 13:54:51 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/10 13:56:01 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libftprintf.h"
 
 int ft_putchar(const char c)
 {

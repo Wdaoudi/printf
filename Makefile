@@ -6,11 +6,11 @@
 #    By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/10 11:26:23 by wdaoudi-          #+#    #+#              #
-#    Updated: 2024/06/10 13:32:05 by wdaoudi-         ###   ########.fr        #
+#    Updated: 2024/06/10 13:56:35 by wdaoudi-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =     write.c \
+SRCS =     write.c printf.c \
 
 OBJS            = $(SRCS:.c=.o)
 
