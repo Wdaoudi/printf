@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:32:10 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/11 06:28:25 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/15 15:15:38 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,35 +79,3 @@ int	ft_putnbrbase(int n)
 	i++;
 	return (i);
 }
-
-// int	ft_putnbrbasebinaire(int n)
-// {
-// 	long	nbr;
-// 	char	*base;
-// 	size_t		i;
-
-// 	nbr = n;
-// 	base = "01";
-// 	i = 0;
-// 	if (nbr < 0)
-// 	{
-// 		write(1, "-", 1);
-// 		nbr = -nbr;
-// 		i++;
-// 	}
-// 	if (nbr >= 2)
-// 	{
-// 		i = i + ft_putnbrbasebinaire(nbr / 2);
-// 	}
-// 	write(1, &base[nbr % 2], 1);
-// 	i++;
-// 	return (i);
-// }
-
-// int	main(int ac, char **av)
-// {
-// 	if (ac < 1)
-// 		return (0);
-// 	ft_putnbrbase(atoi(av[1]));
-// 	return (0);
-// }
