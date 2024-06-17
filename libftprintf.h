@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:45:24 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/17 14:34:02 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/17 16:02:33 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PRINTF_H
 
 # include <stdarg.h>
+# include <stdlib.h>
 # include <unistd.h>
 
 int		ft_printf(const char *format, ...);
