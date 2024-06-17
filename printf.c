@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:21:28 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/15 15:50:39 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:44:30 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,49 +16,48 @@ int	ft_printf(const char *format, ...)
 {
 	size_t i;
 	va_list args;
-	char	c;
-	char	*str;
-	
+	char c;
+	char *str;
+
 	va_start(args, format);
 	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '%')
-				write(1, "%", 1);
-			else if (format[i + 1] == 'c')
-			{
-				c = (char) va_arg(args, char);
-			    ft_putchar(c); //cast en char 
-			}
-			else if (format[i + 1] == 's')
-			{
-				str = (char *) va_arg(args,char *);
-				ft_putstr(str); //cast en char *
-			}
-			else if (format[i + 1] == 'p')
-			{
-				str = (char *) va_arg(args, char *);
-				ft_putstr(str);
-			}
-			else if (format[i + 1] == 'd')
-				ft_itoa(va_arg(args, int));
-			else if (format[i + 1] == 'i')
-				ft_itoa(va_arg(args, int));
-			else if (format[i + 1] == 'u')
-				ft_itoa(va_arg(args, int));
-			else if (format[i + 1] == 'x')
-				ft_putnbrbase(va_arg(args, int));
-			else if (format[i + 1] == 'X')
-				ft_putnbrbase(va_arg(args, int));
 			i++;
+			if (format[i] == '%')
+				write(1, "%", 1);
+			else if (format[i] == 'c')
+			{
+				c = (char)va_arg(args, int);
+				ft_putchar(c); // cast en char
+			}
+			else if (format[i] == 's')
+			{
+				str = (char *)va_arg(args, char *);
+				ft_putstr(str); // cast en char *
+			}
+			else if (format[i] == 'p')
+			{
+				void *ptr = va_arg(args, void *);
+				ft_putstr("0x");
+				ft_putnbrbase((unsigned long)ptr, "0123456789");
+			}
+			else if (format[i] == 'd' || format[i] == 'i')
+				ft_putnbrbase(va_arg(args, int), "0123456789");
+			else if (format[i] == 'u')
+				ft_putnbrbase(va_arg(args, int), "0123456789");
+			else if (format[i] == 'x')
+				ft_putnbrbase(va_arg(args, int), "0123456789abcdef");
+			else if (format[i] == 'X')
+				ft_putnbrbase(va_arg(args, int), "0123456789ABCDEF");
 		}
 		else
 		{
-			ft_putchar(va_arg(args, int));
-			i++;
+			ft_putchar(format[i]);
 		}
+		i ++;
 	}
 	va_end(args);
 	return (i);

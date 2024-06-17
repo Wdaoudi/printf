@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:32:10 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/15 15:15:38 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/17 12:46:08 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,24 @@ int	ft_putnbr(const int n)
 	}
 	return (i);
 }
+long	ft_strlen(char *str)
+{
+	long	n;
 
-int	ft_putnbrbase(int n)
+	n = 0;
+	while (str)
+		n++;
+	return (n);
+}
+
+int	ft_putnbrbase(long n, char *base)
 {
 	long	nbr;
-	char	*base;
 	size_t	i;
+	long	lenght;
 
+	lenght = ft_strlen(base);
 	nbr = n;
-	base = "0123456789ABCDEF";
 	i = 0;
 	if (nbr < 0)
 	{
@@ -71,11 +80,11 @@ int	ft_putnbrbase(int n)
 		nbr = -nbr;
 		i++;
 	}
-	if (nbr >= 16)
+	if (nbr >= lenght)
 	{
-		i = i + ft_putnbrbase(nbr / 16);
+		i = i + ft_putnbrbase(nbr / lenght, base);
 	}
-	write(1, &base[nbr % 16], 1);
+	write(1, &base[nbr % lenght], 1);
 	i++;
 	return (i);
 }
