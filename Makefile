@@ -1,38 +1,36 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/10 11:26:23 by wdaoudi-          #+#    #+#              #
-#    Updated: 2024/06/19 14:37:44 by wdaoudi-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = libftprintf.a
-SRCS = ft_printf.c write.c write2.c
-OBJS = ${SRCS:.c=.o}
-HEADER = includes
-
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
 RM = rm -f
+AR = ar rcs
 
-${NAME}: ${OBJS}
-	@ar -rcs ${NAME} ${OBJS}
+#Sources
+
+SRC =  ft_printf.c \
+        write.c \
+		write2.c	\
+
+OBJ = $(SRC:.c=.o)
+
+all:  $(NAME)
+
+$(NAME):    $(OBJ)
+			@$(AR) $(NAME) $(OBJ)
+			@echo "ft_printf compiled!"
 
 %.o: %.c
-	@${CC} -c ${CFLAGS} -o $@ $< -I ${HEADER}
-
-all: ${NAME}
+			@echo "Compiling: $<"
+			@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@${RM} ${OBJS}
+			@$(RM) -f *.o
+			@echo "ft_printf object files cleaned!"
 
-fclean: clean
-	@${RM} ${NAME}
+fclean:		clean
+			@$(RM) -f $(NAME)
+			@echo "ft_printf executable files cleaned!"
 
-re: fclean all
+re:			fclean all
+			@echo "Cleaned and rebuilt everything for ft_printf!"
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re norm

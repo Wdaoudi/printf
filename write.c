@@ -6,11 +6,11 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:32:10 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/17 13:05:50 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/19 17:39:53 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(const char c)
 {
