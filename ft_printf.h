@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:45:24 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/19 17:39:14 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:15:21 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 # define __CONVERTER "cspdiuxX%"
 
 int		ft_printf(const char *format, ...);
-int		ft_putchar(const char c);
+int		type(va_list args, const char c, size_t len);
+int		ptrdef(va_list args, size_t len);
+long	ft_strlen(char *str);
+char	*ft_itoa(int n);
+int		ft_putchar(int c);
 int		ft_putstr(char *str);
 int		ft_putnbr(const int n);
-int		ft_putnbrbase(long n, char *base);
+int		ft_putnbrbase(unsigned long n, char *base);
+int		ft_putptrbase(unsigned long n, char *base);
 char	*ft_itoa(int n);
 
 #endif

@@ -6,87 +6,94 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:21:28 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/20 13:23:13 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:12:57 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	printf4(va_list args, char *str)
-{
-	str = (char *)va_arg(args, char *);
-	ft_putstr(str);
-}
-void	printf3(va_list args)
+int	ptrdef(va_list args, size_t len)
 {
 	void	*ptr;
 
 	ptr = va_arg(args, void *);
-	ft_putstr("0x");
-	ft_putnbrbase((unsigned long)ptr, "0123456789");
+	printf("%zu\n", len);
+	len += write(1, "0x", 2);
+	if (ptr == NULL)
+		len += write(1, "0", 1);
+	else
+		len += ft_putptrbase((long)ptr, "0123456789abcdef");
+	len --;
+	return (len);
 }
 
-void	printf2(va_list args, const char *format, int i, char *str)
-// essayer de retoruner un i depuis les fonctions print
+int	type(va_list args, const char c, size_t len)
 {
-	int c;
-
-	c = 0;
-	if (format[i] == '%')
-		write(1, "%", 1);
-	else if (format[i] == 'c')
-	{
-		c = (char)va_arg(args, int);
-		ft_putchar(c);
-	}
-	else if (format[i] == 's')
-		printf4(args, str);
-	else if (format[i] == 'p')
-		printf3(args);
-	else if (format[i] == 'd' || format[i] == 'i')
-		ft_putnbrbase(va_arg(args, int), "0123456789");
-	else if (format[i] == 'u')
-		ft_putnbrbase(va_arg(args, int), "0123456789");
-	else if (format[i] == 'x')
-		ft_putnbrbase(va_arg(args, int), "0123456789abcdef");
-	else if (format[i] == 'X')
-		ft_putnbrbase(va_arg(args, int), "0123456789ABCDEF");
+	if (c == '%')
+		len += ft_putchar('%');
+	else if (c == 'c')
+		len += ft_putchar(va_arg(args, int));
+	else if (c == 's')
+		len += ft_putstr(va_arg(args, char *));
+	else if (c == 'p')
+		len += ptrdef(args, len);
+	else if (c == 'd' || c == 'i')
+		len += ft_putnbrbase(va_arg(args, int), "0123456789");
+	else if (c == 'u')
+		len += ft_putnbrbase(va_arg(args, unsigned int), "0123456789");
+	else if (c == 'x')
+		len += ft_putnbrbase(va_arg(args, unsigned int), "0123456789abcdef");
+	else if (c == 'X')
+		len += ft_putnbrbase(va_arg(args, unsigned int), "0123456789ABCDEF");
+	return (len);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	size_t	i;
+	size_t	len;
 	va_list	args;
-	char	*str;
 
 	va_start(args, format);
 	i = 0;
-	str = NULL;
+	len = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
-			printf2(args, format, i + 1, str); // i = au debut
+			len = type(args, format[i + 1], len);
 			i++;
 		}
 		else
+		{
 			ft_putchar(format[i]);
+			len++;
+		}
 		i++;
 	}
 	va_end(args);
-	return (i);
+	printf("%zu\n", len);
+	return (len);
 }
 
-// int	main(void)
-// {
-// 	ft_printf("Hello %c\n", 'A');
-// 	ft_printf("String: %s\n", "Hello, World!");
-// 	ft_printf("Pointer: %p\n", main);
-// 	ft_printf("Decimal: %d\n", 123);
-// 	ft_printf("Unsigned: %u\n", 123);
-// 	ft_printf("Hex (lowercase): %x\n", 255);
-// 	ft_printf("Hex (uppercase): %X\n", 255);
-// 	ft_printf("Percent sign: %%\n");
+/*int	main(void)
+{
+	// ft_printf("%c",'A');
+	// ft_printf("%s\n", "Hello, World!");
+	ft_printf("%p\n", main);
+	// ft_printf("%d\n", 123);
+	// ft_printf("%u\n", 123);
+	// ft_printf("%x\n", 42);
+	// ft_printf("%X\n", 42);
+	// ft_printf("%%\n");
+	// printf("%c\n", 'A');
+	// printf("%s\n", "Hello, World!");
+	printf("%p\n", main);
+	// printf("%d\n", 123);
+	// printf("%u\n", 123);
+	// printf("%x\n", 255);
+	// printf("%X\n", 255);
+	// printf("%%\n");
 
-// 	return (0);
-// }
+	return (0);
+}*/

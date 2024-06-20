@@ -6,13 +6,13 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:32:10 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/19 17:39:53 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:14:39 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(const char c)
+int	ft_putchar(int c)
 {
 	return (write(1, &c, 1));
 }
@@ -22,6 +22,10 @@ int	ft_putstr(char *str)
 	size_t	i;
 
 	i = 0;
+	if (!str)
+	{
+		return (ft_putstr("(null)"));
+	}
 	while (str[i])
 	{
 		ft_putchar(str[i]);
@@ -66,11 +70,11 @@ long	ft_strlen(char *str)
 	return (n);
 }
 
-int	ft_putnbrbase(long n, char *base)
+int	ft_putnbrbase(unsigned long n, char *base)
 {
-	long	nbr;
-	size_t	count;
-	long	lenght;
+	unsigned long	nbr;
+	size_t			count;
+	unsigned long	lenght;
 
 	lenght = ft_strlen(base);
 	nbr = n;
@@ -83,9 +87,23 @@ int	ft_putnbrbase(long n, char *base)
 	}
 	if (nbr >= lenght)
 	{
-		count = count + ft_putnbrbase(nbr / lenght, base);
+		count += ft_putnbrbase(nbr / lenght, base);
 	}
 	write(1, &base[nbr % lenght], 1);
+	count++;
+	return (count);
+}
+
+int	ft_putptrbase(unsigned long n, char *base)
+{
+	size_t	length;
+	size_t	count;
+
+	length = ft_strlen(base);
+	count = 0;
+	if (n >= length)
+		count += ft_putnbrbase(n / length, base);
+	write(1, &base[n % length], 1);
 	count++;
 	return (count);
 }
