@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:21:28 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/19 18:26:13 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/20 13:23:13 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	printf4(va_list args, char *str)
 {
-		str = (char *)va_arg(args, char *);
-		ft_putstr(str);
+	str = (char *)va_arg(args, char *);
+	ft_putstr(str);
 }
 void	printf3(va_list args)
 {
@@ -26,9 +26,10 @@ void	printf3(va_list args)
 	ft_putnbrbase((unsigned long)ptr, "0123456789");
 }
 
-void	printf2(va_list args, const char *format, int i, char *str) // j essaye en transformant la fonction d un int a un void
+void	printf2(va_list args, const char *format, int i, char *str)
+// essayer de retoruner un i depuis les fonctions print
 {
-	int 	c;
+	int c;
 
 	c = 0;
 	if (format[i] == '%')
@@ -64,7 +65,10 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			printf2(args, format, i + 1, str); // i = au debut 
+		{
+			printf2(args, format, i + 1, str); // i = au debut
+			i++;
+		}
 		else
 			ft_putchar(format[i]);
 		i++;
@@ -73,15 +77,16 @@ int	ft_printf(const char *format, ...)
 	return (i);
 }
 
-// int main() {
-//     ft_printf("Hello %c\n", 'A');
-//     ft_printf("String: %s\n", "Hello, World!");
-//     ft_printf("Pointer: %p\n", main);
-//     ft_printf("Decimal: %d\n", 123);
-//     ft_printf("Unsigned: %u\n", 123);
-//     ft_printf("Hex (lowercase): %x\n", 255);
-//     ft_printf("Hex (uppercase): %X\n", 255);
-//     ft_printf("Percent sign: %%\n");
+// int	main(void)
+// {
+// 	ft_printf("Hello %c\n", 'A');
+// 	ft_printf("String: %s\n", "Hello, World!");
+// 	ft_printf("Pointer: %p\n", main);
+// 	ft_printf("Decimal: %d\n", 123);
+// 	ft_printf("Unsigned: %u\n", 123);
+// 	ft_printf("Hex (lowercase): %x\n", 255);
+// 	ft_printf("Hex (uppercase): %X\n", 255);
+// 	ft_printf("Percent sign: %%\n");
 
-//     return 0;
+// 	return (0);
 // }
