@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 13:32:10 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/20 17:14:39 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:28:42 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ long	ft_strlen(char *str)
 	return (n);
 }
 
-int	ft_putnbrbase(unsigned long n, char *base)
+int	ft_putnbrbase(long n, char *base)
 {
-	unsigned long	nbr;
-	size_t			count;
-	unsigned long	lenght;
+	long	nbr;
+	size_t	count;
+	long	lenght;
 
 	lenght = ft_strlen(base);
 	nbr = n;

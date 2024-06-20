@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:21:28 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/20 18:12:57 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:26:00 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ int	ptrdef(va_list args, size_t len)
 	void	*ptr;
 
 	ptr = va_arg(args, void *);
-	printf("%zu\n", len);
 	len += write(1, "0x", 2);
 	if (ptr == NULL)
 		len += write(1, "0", 1);
 	else
 		len += ft_putptrbase((long)ptr, "0123456789abcdef");
-	len --;
 	return (len);
 }
 
@@ -72,15 +70,18 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(args);
-	printf("%zu\n", len);
 	return (len);
 }
 
 /*int	main(void)
 {
+	size_t	t = 0;
 	// ft_printf("%c",'A');
 	// ft_printf("%s\n", "Hello, World!");
-	ft_printf("%p\n", main);
+	t = ft_printf("%p\n", (void*)LONG_MIN);
+	printf("%zu\n", t);
+	t = ft_printf("%p\n", (void*)LONG_MAX);
+	printf("%zu\n", t);
 	// ft_printf("%d\n", 123);
 	// ft_printf("%u\n", 123);
 	// ft_printf("%x\n", 42);
@@ -88,7 +89,10 @@ int	ft_printf(const char *format, ...)
 	// ft_printf("%%\n");
 	// printf("%c\n", 'A');
 	// printf("%s\n", "Hello, World!");
-	printf("%p\n", main);
+	t = printf("%p\n", (void*)LONG_MIN);
+	printf("%zu\n", t);
+	t = printf("%p\n", (void*)LONG_MAX);
+	printf("%zu\n", t);
 	// printf("%d\n", 123);
 	// printf("%u\n", 123);
 	// printf("%x\n", 255);

@@ -6,13 +6,14 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:45:24 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/20 17:15:21 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:28:50 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include <limits.h>
 # include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -28,7 +29,7 @@ char	*ft_itoa(int n);
 int		ft_putchar(int c);
 int		ft_putstr(char *str);
 int		ft_putnbr(const int n);
-int		ft_putnbrbase(unsigned long n, char *base);
+int		ft_putnbrbase(long n, char *base);
 int		ft_putptrbase(unsigned long n, char *base);
 char	*ft_itoa(int n);
 
