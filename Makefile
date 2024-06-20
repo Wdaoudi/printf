@@ -8,7 +8,6 @@ AR = ar rcs
 
 SRC =  ft_printf.c \
         write.c \
-		write2.c	\
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,23 +6,17 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:21:28 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/20 18:26:00 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:46:56 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ptrdef(va_list args, size_t len)
+int	ptrdef(long a,char *base)
 {
-	void	*ptr;
-
-	ptr = va_arg(args, void *);
-	len += write(1, "0x", 2);
-	if (ptr == NULL)
-		len += write(1, "0", 1);
-	else
-		len += ft_putptrbase((long)ptr, "0123456789abcdef");
-	return (len);
+	if (a == 0)
+		return(ft_putstr("(nil)"));
+	return (ft_putstr("0x") + ft_putptrbase(a, base));
 }
 
 int	type(va_list args, const char c, size_t len)
@@ -34,7 +28,7 @@ int	type(va_list args, const char c, size_t len)
 	else if (c == 's')
 		len += ft_putstr(va_arg(args, char *));
 	else if (c == 'p')
-		len += ptrdef(args, len);
+		len += ptrdef((long)va_arg(args, void *), "0123456789abcdef");
 	else if (c == 'd' || c == 'i')
 		len += ft_putnbrbase(va_arg(args, int), "0123456789");
 	else if (c == 'u')

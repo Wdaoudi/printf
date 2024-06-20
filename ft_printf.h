@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 10:45:24 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/20 18:28:50 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/20 18:47:16 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 int		ft_printf(const char *format, ...);
 int		type(va_list args, const char c, size_t len);
-int		ptrdef(va_list args, size_t len);
+int		ptrdef(long a,char *base);
 long	ft_strlen(char *str);
 char	*ft_itoa(int n);
 int		ft_putchar(int c);
