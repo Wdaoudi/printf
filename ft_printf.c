@@ -6,7 +6,7 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:21:28 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/20 18:46:56 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:55:10 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	ft_printf(const char *format, ...)
 	va_start(args, format);
 	i = 0;
 	len = 0;
+	if (!format)
+		return (-1);
 	while (format[i])
 	{
 		if (format[i] == '%')
