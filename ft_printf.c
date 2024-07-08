@@ -6,16 +6,16 @@
 /*   By: wdaoudi- <wdaoudi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 12:21:28 by wdaoudi-          #+#    #+#             */
-/*   Updated: 2024/06/26 15:55:10 by wdaoudi-         ###   ########.fr       */
+/*   Updated: 2024/07/08 13:59:54 by wdaoudi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ptrdef(long a,char *base)
+int	ptrdef(long a, char *base)
 {
 	if (a == 0)
-		return(ft_putstr("(nil)"));
+		return (ft_putstr("(nil)"));
 	return (ft_putstr("0x") + ft_putptrbase(a, base));
 }
 
